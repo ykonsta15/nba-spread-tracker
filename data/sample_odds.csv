@@ -1,0 +1,6 @@
+game_id,date,home_team,away_team,spread_open,spread_close,provider,timestamp
+,2023-10-24,DEN,LAL,-5.0,-4.5,mock_csv,2023-10-24T21:00:00+00:00
+,2023-10-24,GSW,PHX,-1.5,-2.0,mock_csv,2023-10-24T21:00:00+00:00
+,2023-10-25,SAC,UTA,-4.5,-5.0,mock_csv,2023-10-25T21:00:00+00:00
+,2023-10-26,LAL,PHX,1.0,1.5,mock_csv,2023-10-26T21:00:00+00:00
+,2023-10-27,BOS,MIA,-3.5,-4.0,mock_csv,2023-10-27T21:00:00+00:00

@@ -1,0 +1,18 @@
+2026-03-01 17:36:40,479 | INFO | src.data.nba_client | Fetching schedule for 2026-03-01
+2026-03-01 17:36:40,747 | INFO | src.data.nba_client | Fetching schedule for 2026-03-02
+2026-03-01 17:36:40,799 | INFO | src.data.nba_client | Fetching schedule for 2026-03-03
+2026-03-01 17:36:40,905 | INFO | src.data.nba_client | Fetching schedule for 2026-03-04
+2026-03-01 17:36:41,039 | INFO | src.data.nba_client | Fetching schedule for 2026-03-05
+2026-03-01 17:36:41,106 | INFO | src.data.nba_client | Fetching schedule for 2026-03-06
+2026-03-01 17:36:41,267 | INFO | src.data.nba_client | Fetching schedule for 2026-03-07
+2026-03-01 17:36:41,325 | INFO | src.data.nba_client | Fetching schedule for 2026-03-08
+2026-03-01 17:36:41,835 | INFO | src.data.odds_provider | Loaded 12 odds quotes from TheOddsAPI
+2026-03-01 17:38:31,093 | INFO | src.data.nba_client | Fetching schedule for 2026-03-01
+2026-03-01 17:38:31,291 | INFO | src.data.nba_client | Fetching schedule for 2026-03-02
+2026-03-01 17:38:31,339 | INFO | src.data.nba_client | Fetching schedule for 2026-03-03
+2026-03-01 17:38:31,388 | INFO | src.data.nba_client | Fetching schedule for 2026-03-04
+2026-03-01 17:38:31,459 | INFO | src.data.nba_client | Fetching schedule for 2026-03-05
+2026-03-01 17:38:31,567 | INFO | src.data.nba_client | Fetching schedule for 2026-03-06
+2026-03-01 17:38:31,651 | INFO | src.data.nba_client | Fetching schedule for 2026-03-07
+2026-03-01 17:38:31,707 | INFO | src.data.nba_client | Fetching schedule for 2026-03-08
+2026-03-01 17:38:32,249 | INFO | src.data.odds_provider | Loaded 12 odds quotes from TheOddsAPI

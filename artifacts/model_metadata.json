@@ -1,0 +1,39 @@
+{
+  "model_version": "ridge_20260301T220217Z",
+  "feature_cols": [
+    "elo_diff",
+    "home_rest_days",
+    "away_rest_days",
+    "home_b2b",
+    "away_b2b",
+    "home_rolling_pd",
+    "away_rolling_pd",
+    "rolling_pd_diff",
+    "home_indicator"
+  ],
+  "train_summary": {
+    "threshold": 1.0,
+    "train_metrics": {
+      "sample_size": 712,
+      "mae": 11.355512467659421,
+      "ats_bets": 0,
+      "ats_wins": 0,
+      "ats_losses": 0,
+      "ats_pushes": 0,
+      "ats_win_rate": null,
+      "units": 0.0
+    },
+    "test_metrics": {
+      "sample_size": 179,
+      "mae": 12.437672756502558,
+      "ats_bets": 0,
+      "ats_wins": 0,
+      "ats_losses": 0,
+      "ats_pushes": 0,
+      "ats_win_rate": null,
+      "units": 0.0
+    },
+    "train_start": "2025-10-21",
+    "train_end": "2026-01-30"
+  }
+}
