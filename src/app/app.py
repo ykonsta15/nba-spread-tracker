@@ -317,6 +317,33 @@ def render_performance(df: pd.DataFrame) -> None:
     st.plotly_chart(chart4, use_container_width=True)
 
 
+
+def render_what_is_this() -> None:
+    st.title("What Is This")
+    st.markdown(
+        """
+This app tracks a baseline NBA margin model and shows how its picks perform over time.
+
+### What it does
+- Predicts home margin for upcoming games
+- Converts prediction into a **Model Pick** (home/away lean)
+- If a spread is available, computes **ATS pick** and **Edge**
+- Stores outcomes after games finish and updates tracking metrics
+
+### How to read it
+- **Model Pick**: lean from predicted margin only
+- **ATS**: Against The Spread (pick vs bookmaker spread)
+- **Edge**: `predicted_margin - spread` in points
+
+### Update behavior
+- Data and predictions are refreshed daily by scheduled automation
+- You can also run updates manually with `python3 scripts/run_daily.py`
+
+### Scope
+This is a portfolio baseline focused on transparent process and tracking, not guaranteed betting profitability.
+        """
+    )
+
 def render_model_card() -> None:
     st.title("Model Card")
     st.markdown(
@@ -350,9 +377,11 @@ def render_model_card() -> None:
 
 def main() -> None:
     df = _load_all()
-    page = st.sidebar.radio("Page", ["Home", "Performance", "Model Card"])
+    page = st.sidebar.radio("Page", ["What Is This", "Home", "Performance", "Model Card"])
 
-    if page == "Home":
+    if page == "What Is This":
+        render_what_is_this()
+    elif page == "Home":
         render_home(df)
     elif page == "Performance":
         render_performance(df)
