@@ -20,7 +20,10 @@ from src.utils.config import settings
 
 st.set_page_config(page_title="NBA Spread Baseline", page_icon="🏀", layout="wide")
 
-repo = Repository(settings.db_path)
+DB_PATH = settings.db_path if settings.db_path.is_absolute() else (ROOT / settings.db_path)
+DB_PATH.parent.mkdir(parents=True, exist_ok=True)
+init_db(DB_PATH)
+repo = Repository(DB_PATH)
 
 
 def _model_pick_from_margin(predicted_margin: float | None) -> str | None:
