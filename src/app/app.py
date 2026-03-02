@@ -15,6 +15,7 @@ import plotly.express as px
 import streamlit as st
 
 from src.db.repository import Repository
+from src.db.schema import init_db
 from src.utils.config import settings
 
 st.set_page_config(page_title="NBA Spread Baseline", page_icon="🏀", layout="wide")
