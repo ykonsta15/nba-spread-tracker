@@ -16,3 +16,248 @@
 2026-03-01 17:38:31,651 | INFO | src.data.nba_client | Fetching schedule for 2026-03-07
 2026-03-01 17:38:31,707 | INFO | src.data.nba_client | Fetching schedule for 2026-03-08
 2026-03-01 17:38:32,249 | INFO | src.data.odds_provider | Loaded 12 odds quotes from TheOddsAPI
+2026-03-02 07:02:35,222 | INFO | src.data.nba_client | Fetching schedule for 2026-03-02
+2026-03-02 07:02:35,545 | INFO | src.data.nba_client | Fetching schedule for 2026-03-03
+2026-03-02 07:02:35,676 | INFO | src.data.nba_client | Fetching schedule for 2026-03-04
+2026-03-02 07:02:35,812 | INFO | src.data.nba_client | Fetching schedule for 2026-03-05
+2026-03-02 07:02:35,995 | INFO | src.data.nba_client | Fetching schedule for 2026-03-06
+2026-03-02 07:02:36,185 | INFO | src.data.nba_client | Fetching schedule for 2026-03-07
+2026-03-02 07:02:36,470 | INFO | src.data.nba_client | Fetching schedule for 2026-03-08
+2026-03-02 07:02:36,628 | INFO | src.data.nba_client | Fetching schedule for 2026-03-09
+2026-03-02 07:02:37,002 | INFO | src.data.odds_provider | Loaded 8 odds quotes from TheOddsAPI
+2026-03-02 11:27:36,735 | INFO | src.data.nba_client | Fetching schedule for 2026-03-02
+Traceback (most recent call last):
+  File "/Users/ykonsta/Desktop/CodeX_Models/.venv/lib/python3.13/site-packages/urllib3/connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "/Users/ykonsta/Desktop/CodeX_Models/.venv/lib/python3.13/site-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/socket.py", line 977, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/ykonsta/Desktop/CodeX_Models/.venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/Users/ykonsta/Desktop/CodeX_Models/.venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "/Users/ykonsta/Desktop/CodeX_Models/.venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/ykonsta/Desktop/CodeX_Models/.venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "/Users/ykonsta/Desktop/CodeX_Models/.venv/lib/python3.13/site-packages/urllib3/connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ~~~~~~~~~~~~~~^^
+  File "/Users/ykonsta/Desktop/CodeX_Models/.venv/lib/python3.13/site-packages/urllib3/connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='stats.nba.com', port=443): Failed to resolve 'stats.nba.com' ([Errno 8] nodename nor servname provided, or not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/ykonsta/Desktop/CodeX_Models/.venv/lib/python3.13/site-packages/requests/adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/Users/ykonsta/Desktop/CodeX_Models/.venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/Users/ykonsta/Desktop/CodeX_Models/.venv/lib/python3.13/site-packages/urllib3/util/retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='stats.nba.com', port=443): Max retries exceeded with url: /stats/scoreboardv2?DayOffset=0&GameDate=03%2F02%2F2026&LeagueID=00 (Caused by NameResolutionError("HTTPSConnection(host='stats.nba.com', port=443): Failed to resolve 'stats.nba.com' ([Errno 8] nodename nor servname provided, or not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/ykonsta/Desktop/CodeX_Models/scripts/predict_today.py", line 140, in <module>
+    main()
+    ~~~~^^
+  File "/Users/ykonsta/Desktop/CodeX_Models/scripts/predict_today.py", line 60, in main
+    daily = fetch_schedule_for_date(target_date)
+  File "/Users/ykonsta/Desktop/CodeX_Models/src/data/nba_client.py", line 76, in fetch_schedule_for_date
+    endpoint = scoreboardv2.ScoreboardV2(game_date=date_str, league_id="00", day_offset=0)
+  File "/Users/ykonsta/Desktop/CodeX_Models/.venv/lib/python3.13/site-packages/nba_api/stats/endpoints/scoreboardv2.py", line 208, in __init__
+    self.get_request()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Users/ykonsta/Desktop/CodeX_Models/.venv/lib/python3.13/site-packages/nba_api/stats/endpoints/scoreboardv2.py", line 211, in get_request
+    self.nba_response = NBAStatsHTTP().send_api_request(
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        endpoint=self.endpoint,
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        timeout=self.timeout,
+        ^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/ykonsta/Desktop/CodeX_Models/.venv/lib/python3.13/site-packages/nba_api/library/http.py", line 160, in send_api_request
+    response = self.get_session().get(
+        url=base_url,
+    ...<3 lines>...
+        timeout=timeout,
+    )
+  File "/Users/ykonsta/Desktop/CodeX_Models/.venv/lib/python3.13/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ykonsta/Desktop/CodeX_Models/.venv/lib/python3.13/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/Users/ykonsta/Desktop/CodeX_Models/.venv/lib/python3.13/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/Users/ykonsta/Desktop/CodeX_Models/.venv/lib/python3.13/site-packages/requests/adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='stats.nba.com', port=443): Max retries exceeded with url: /stats/scoreboardv2?DayOffset=0&GameDate=03%2F02%2F2026&LeagueID=00 (Caused by NameResolutionError("HTTPSConnection(host='stats.nba.com', port=443): Failed to resolve 'stats.nba.com' ([Errno 8] nodename nor servname provided, or not known)"))
+Traceback (most recent call last):
+  File "/Users/ykonsta/Desktop/CodeX_Models/scripts/run_daily.py", line 47, in <module>
+    main()
+    ~~~~^^
+  File "/Users/ykonsta/Desktop/CodeX_Models/scripts/run_daily.py", line 31, in main
+    run_cmd([
+    ~~~~~~~^^
+        sys.executable,
+        ^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        args.odds_provider,
+        ^^^^^^^^^^^^^^^^^^^
+    ])
+    ^^
+  File "/Users/ykonsta/Desktop/CodeX_Models/scripts/run_daily.py", line 25, in run_cmd
+    subprocess.run(cmd, check=True)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/subprocess.py", line 577, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['/Users/ykonsta/Desktop/CodeX_Models/.venv/bin/python3', 'scripts/predict_today.py', '--date', '2026-03-02', '--days-ahead', '7', '--odds-provider', 'auto']' returned non-zero exit status 1.
+2026-03-02 11:53:20,180 | INFO | src.data.nba_client | Fetching schedule for 2026-03-02
+Traceback (most recent call last):
+  File "/Users/ykonsta/Desktop/CodeX_Models/.venv/lib/python3.13/site-packages/urllib3/connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "/Users/ykonsta/Desktop/CodeX_Models/.venv/lib/python3.13/site-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/socket.py", line 977, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/ykonsta/Desktop/CodeX_Models/.venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/Users/ykonsta/Desktop/CodeX_Models/.venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "/Users/ykonsta/Desktop/CodeX_Models/.venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/ykonsta/Desktop/CodeX_Models/.venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "/Users/ykonsta/Desktop/CodeX_Models/.venv/lib/python3.13/site-packages/urllib3/connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ~~~~~~~~~~~~~~^^
+  File "/Users/ykonsta/Desktop/CodeX_Models/.venv/lib/python3.13/site-packages/urllib3/connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='stats.nba.com', port=443): Failed to resolve 'stats.nba.com' ([Errno 8] nodename nor servname provided, or not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/ykonsta/Desktop/CodeX_Models/.venv/lib/python3.13/site-packages/requests/adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/Users/ykonsta/Desktop/CodeX_Models/.venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/Users/ykonsta/Desktop/CodeX_Models/.venv/lib/python3.13/site-packages/urllib3/util/retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='stats.nba.com', port=443): Max retries exceeded with url: /stats/scoreboardv2?DayOffset=0&GameDate=03%2F02%2F2026&LeagueID=00 (Caused by NameResolutionError("HTTPSConnection(host='stats.nba.com', port=443): Failed to resolve 'stats.nba.com' ([Errno 8] nodename nor servname provided, or not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/ykonsta/Desktop/CodeX_Models/scripts/predict_today.py", line 140, in <module>
+    main()
+    ~~~~^^
+  File "/Users/ykonsta/Desktop/CodeX_Models/scripts/predict_today.py", line 60, in main
+    daily = fetch_schedule_for_date(target_date)
+  File "/Users/ykonsta/Desktop/CodeX_Models/src/data/nba_client.py", line 76, in fetch_schedule_for_date
+    endpoint = scoreboardv2.ScoreboardV2(game_date=date_str, league_id="00", day_offset=0)
+  File "/Users/ykonsta/Desktop/CodeX_Models/.venv/lib/python3.13/site-packages/nba_api/stats/endpoints/scoreboardv2.py", line 208, in __init__
+    self.get_request()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Users/ykonsta/Desktop/CodeX_Models/.venv/lib/python3.13/site-packages/nba_api/stats/endpoints/scoreboardv2.py", line 211, in get_request
+    self.nba_response = NBAStatsHTTP().send_api_request(
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        endpoint=self.endpoint,
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        timeout=self.timeout,
+        ^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/ykonsta/Desktop/CodeX_Models/.venv/lib/python3.13/site-packages/nba_api/library/http.py", line 160, in send_api_request
+    response = self.get_session().get(
+        url=base_url,
+    ...<3 lines>...
+        timeout=timeout,
+    )
+  File "/Users/ykonsta/Desktop/CodeX_Models/.venv/lib/python3.13/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ykonsta/Desktop/CodeX_Models/.venv/lib/python3.13/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/Users/ykonsta/Desktop/CodeX_Models/.venv/lib/python3.13/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/Users/ykonsta/Desktop/CodeX_Models/.venv/lib/python3.13/site-packages/requests/adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='stats.nba.com', port=443): Max retries exceeded with url: /stats/scoreboardv2?DayOffset=0&GameDate=03%2F02%2F2026&LeagueID=00 (Caused by NameResolutionError("HTTPSConnection(host='stats.nba.com', port=443): Failed to resolve 'stats.nba.com' ([Errno 8] nodename nor servname provided, or not known)"))
+Traceback (most recent call last):
+  File "/Users/ykonsta/Desktop/CodeX_Models/scripts/run_daily.py", line 47, in <module>
+    main()
+    ~~~~^^
+  File "/Users/ykonsta/Desktop/CodeX_Models/scripts/run_daily.py", line 31, in main
+    run_cmd([
+    ~~~~~~~^^
+        sys.executable,
+        ^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        args.odds_provider,
+        ^^^^^^^^^^^^^^^^^^^
+    ])
+    ^^
+  File "/Users/ykonsta/Desktop/CodeX_Models/scripts/run_daily.py", line 25, in run_cmd
+    subprocess.run(cmd, check=True)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/subprocess.py", line 577, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['/Users/ykonsta/Desktop/CodeX_Models/.venv/bin/python3', 'scripts/predict_today.py', '--date', '2026-03-02', '--days-ahead', '7', '--odds-provider', 'auto']' returned non-zero exit status 1.

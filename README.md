@@ -218,3 +218,32 @@ launchctl load ~/Library/LaunchAgents/com.codex.nba.daily.plist
 Logs:
 - `logs/launchd_daily.out.log`
 - `logs/launchd_daily.err.log`
+
+
+## Deploy On Railway (Docker, always-on)
+
+This repo is preconfigured for container deploy with Streamlit entrypoint:
+- `src/app/app.py`
+
+Files added for deploy:
+- `Dockerfile`
+- `.dockerignore`
+- `.streamlit/config.toml`
+
+### Steps
+
+1. Push this repository to GitHub.
+2. In Railway, click **New Project** -> **Deploy from GitHub repo**.
+3. Select this repository.
+4. Railway will build using the `Dockerfile` automatically.
+5. Add environment variables in Railway project settings:
+   - `THE_ODDS_API_KEY` (required for live spreads)
+   - Optional: `THE_ODDS_REGIONS=us`
+   - Optional: `THE_ODDS_BOOKMAKERS=fanduel,draftkings,betmgm,caesars`
+6. Deploy. Railway injects `PORT`; container command already binds to `0.0.0.0:$PORT`.
+
+### Notes
+
+- App process:
+  - `streamlit run src/app/app.py --server.address 0.0.0.0 --server.port ${PORT:-8501}`
+- SQLite (`nba_spread.db`) is local to the running container instance. If you redeploy or restart on a fresh instance, you should run your refresh/bootstrap workflow again or move DB to persistent storage.

@@ -8,3 +8,10 @@ Predictions written for 62 game(s) from 2026-03-01 through 2026-03-08 using mode
 $ /Users/ykonsta/Desktop/CodeX_Models/.venv/bin/python3 scripts/update_results.py
 Updated 0 game results.
 Daily workflow complete.
+$ /Users/ykonsta/Desktop/CodeX_Models/.venv/bin/python3 scripts/predict_today.py --date 2026-03-02 --days-ahead 7 --odds-provider auto
+Predictions written for 57 game(s) from 2026-03-02 through 2026-03-09 using model ridge_20260301T220217Z.
+$ /Users/ykonsta/Desktop/CodeX_Models/.venv/bin/python3 scripts/update_results.py
+Updated 0 game results.
+Daily workflow complete.
+$ /Users/ykonsta/Desktop/CodeX_Models/.venv/bin/python3 scripts/predict_today.py --date 2026-03-02 --days-ahead 7 --odds-provider auto
+$ /Users/ykonsta/Desktop/CodeX_Models/.venv/bin/python3 scripts/predict_today.py --date 2026-03-02 --days-ahead 7 --odds-provider auto
